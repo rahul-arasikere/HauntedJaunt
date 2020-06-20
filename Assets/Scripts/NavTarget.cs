@@ -1,18 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class NavTarget : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Transform target;
+    public NavMeshAgent navMeshAgent;
 
     // Update is called once per frame
     void Update()
     {
-        
+        navMeshAgent.SetDestination(target.position);
     }
 }
