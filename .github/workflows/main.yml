@@ -8,10 +8,19 @@ env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
 jobs:
+
   build:
     name: Build my project ✨
     runs-on: ubuntu-latest
     steps:
+
+      #Get License
+      - name: Activate Unity
+        uses: webbertakken/unity-activate@v1.2
+        env:
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
     
       # Checkout
       - name: Checkout repository
@@ -43,3 +52,8 @@ jobs:
         with:
           name: Build
           path: build
+
+      #Release License
+      - name: Return license
+        uses: webbertakken/unity-return-license@v1
+        if: always()
