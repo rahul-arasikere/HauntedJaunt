@@ -3898,6 +3898,21 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 6093032180798312022, guid: 549c69af39b84624b8a053537c407def,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.75549066
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093032180798312022, guid: 549c69af39b84624b8a053537c407def,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.014292836
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093032180798312022, guid: 549c69af39b84624b8a053537c407def,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.075500116
+      objectReference: {fileID: 0}
     - target: {fileID: 6205683311567474133, guid: 549c69af39b84624b8a053537c407def,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -6085,6 +6100,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: JohnLemon
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316985094970614848, guid: a9a79e7b786dbc64e8337ae4f25e222c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8316985094970980448, guid: a9a79e7b786dbc64e8337ae4f25e222c,
         type: 3}
