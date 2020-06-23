@@ -13,16 +13,22 @@ public class GameEnding : MonoBehaviour
     private bool _isPlayerAtExit = false;
     private bool _isPlayerCaught = false;
     private float _timer = 0f;
+    public AudioClip _winAudio;
+    public AudioClip _loseAudio;
 
+    private void Start()
+    {
+
+    }
     private void Update()
     {
         if (_isPlayerAtExit)
         {
-            EndLevel(winPanel, false);
+            EndLevel(winPanel, false, _winAudio);
         }
         else if (_isPlayerCaught)
         {
-            EndLevel(caughtPanel, true);
+            EndLevel(caughtPanel, true, _loseAudio);
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -38,8 +44,16 @@ public class GameEnding : MonoBehaviour
         _isPlayerCaught = true;
     }
 
-    private void EndLevel(CanvasGroup panel, bool doRestart)
+    private IEnumerator PlayAudio(AudioClip audio)
     {
+        AudioSource audioToPlay = new AudioSource();
+        audioToPlay.clip = audio;
+        audioToPlay.Play();
+        yield return new WaitForSeconds(audio.length);
+    }
+    private void EndLevel(CanvasGroup panel, bool doRestart, AudioClip audio)
+    {
+        // StartCoroutine(PlayAudio(audio));
         _timer += Time.deltaTime;
         panel.alpha = _timer / fadeDuration;
 
@@ -47,6 +61,7 @@ public class GameEnding : MonoBehaviour
         {
             if (doRestart)
             {
+                GameState.Instance.PlayerEscaped();
                 SceneManager.LoadScene(0);
             }
             else

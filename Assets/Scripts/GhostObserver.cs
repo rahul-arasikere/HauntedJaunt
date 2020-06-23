@@ -10,6 +10,11 @@ public class GhostObserver : MonoBehaviour
     public NavMeshAgent navMeshAgent;
     private bool _isPlayerInRange;
 
+
+    private void Start()
+    {
+
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform == player)
@@ -28,6 +33,10 @@ public class GhostObserver : MonoBehaviour
 
     private void Update()
     {
+        if (GameState.Instance._isDetected)
+        {
+            navMeshAgent.SetDestination(player.position);
+        }
         if (_isPlayerInRange)
         {
             Vector3 direction = player.position - transform.position;
@@ -38,7 +47,8 @@ public class GhostObserver : MonoBehaviour
             {
                 if (hit.collider.transform == player)
                 {
-                    if (hit.distance < 0.25f)
+                    GameState.Instance.PlayerDetected();
+                    if (hit.distance < 0.5f)
                     {
                         gameEnding.CaughtPlayer();
                     }
